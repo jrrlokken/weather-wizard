@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div><h1 id="title">Rhonda's Weather Wizard</h1></div>
+      <fieldset>
+        <form action="/" method="post">
+          <input
+            name="city"
+            type="text"
+            class="ghost-input"
+            placeholder="Enter a City"
+            required
+          />
+          <input
+            id="submit"
+            type="submit"
+            class="ghost-button"
+            value="Get Weather"
+          />
+        </form>
+        <% if(weather !== null){ %>
+        <div class="results-container">
+          <p>
+            <%= weather.name %>: <%= weather.weather[0].main %><span
+              ><img
+                src="http://openweathermap.org/img/wn/<%= weather.weather[0].icon %>.png"
+            /></span>
+          </p>
+          <p>Temp: <%= weather.main.temp %>&deg;</p>
+          <p>Feels Like: <%= weather.main.feels_like %>&deg;</p>
+          <p>Humidity: <%= weather.main.humidity %>&#37;</p>
+          <% } %> <% if(error !== null){ %>
+          <p><%= error %></p>
+        </div>
+        <% } %>
+      </fieldset>
+    </div>
+  </body>
+</html>
